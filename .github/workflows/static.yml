@@ -113,6 +113,7 @@ jobs:
           path: '_build/html'
 
   deploy-static-site:
+    needs: [build-latest, build-el9-beta]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -136,7 +137,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Make the artifact with the HTML build directory.
-          name: fullsite
+          name: github-pages
           path: '_build/html'
       # Now deploy with the artifact.
       - name: Deploy to GitHub Pages
