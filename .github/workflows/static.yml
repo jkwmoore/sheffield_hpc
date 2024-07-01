@@ -133,7 +133,7 @@ jobs:
           path: '_build/el9-beta'
 
       - name: Ensure _build/html folder exists
-        run: mkdir -P _build/html
+        run: mkdir -p _build/html
 
       - name: Extract latest build to _build/html
         run: tar -xf _build/latest/artifact.tar -C _build/html
