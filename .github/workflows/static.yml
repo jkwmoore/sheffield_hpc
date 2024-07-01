@@ -125,13 +125,19 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: latest
-          path: '_build/html'
-
+          path: '_build/latest'
+    
       - uses: actions/download-artifact@master
         with:
           name: el9-beta
-          path: '_build/html'
-        
+          path: '_build/el9-beta'
+
+      - name: Extract latest build to _build/html
+        run: tar -xf _build/latest/artifact.tar -C _build/html
+
+      - name: Extract el9-beta build to _build/html
+        run: tar -xf _build/el9-beta/artifact.tar -C _build/html
+
       # Make the artifact which is used to deploy.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
